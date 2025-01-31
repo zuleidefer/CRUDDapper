@@ -10,6 +10,14 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUsuarioInterface, UsuarioService>();
 builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("UsuariosApp", builder =>
+    {
+        builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+
+    });
+});
 
 var app = builder.Build();
 
@@ -19,6 +27,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("UsuariosApp");
 
 app.UseHttpsRedirection();
 

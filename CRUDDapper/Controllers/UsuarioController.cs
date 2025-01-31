@@ -3,6 +3,8 @@ using CRUDDapper.Models;
 using CRUDDapper.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Dapper;
+using System.Data.SqlClient;
 
 namespace CRUDDapper.Controllers
 {
